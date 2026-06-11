@@ -1195,17 +1195,19 @@ function captureGPS(){
       var file = photoFiles[i];
       var base64 = await toBase64(file);
       try{
+        var photoFormData = new FormData();
+        photoFormData.append('payload', JSON.stringify({
+          type: 'photo',
+          site_id: siteVal,
+          filename: hhRef + '_photo' + (i+1) + '_' + file.name,
+          mimeType: file.type,
+          data: base64
+        }));
         var res = await fetch(emailConfig.sheets_url, {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            type: 'photo',
-            site_id: siteVal,
-            filename: hhRef + '_photo' + (i+1) + '_' + file.name,
-            mimeType: file.type,
-            data: base64
-          })
+          body: photoFormData
         });
+
         var result = await res.json();
         if(result.url) photoUrls.push(result.url);
       }catch(err){
@@ -1217,10 +1219,11 @@ function captureGPS(){
   data.photo_notes = document.getElementById('h-photo-notes').value;
   data.photo_urls = photoUrls.join(', ');
 
+  var hhFormData = new FormData();
+  hhFormData.append('payload', JSON.stringify({form_type: 'household', data: data}));
   fetch(emailConfig.sheets_url, {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({form_type: 'household', data: data})
+    body: hhFormData
   });
 
   try{
