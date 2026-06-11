@@ -731,11 +731,11 @@ a.docs-link{color:#185FA5;font-size:12px}
           <div class="form-group" style="margin-top:8px">
             <label class="field-label">Current power source for business activity</label>
             <div class="check-group" style="margin-top:4px">
-              <label class="radio-item"><input type="radio" name="h-biz-power" value="Generator"> Generator</label>
-              <label class="radio-item"><input type="radio" name="h-biz-power" value="Solar SHS"> Solar SHS</label>
-              <label class="radio-item"><input type="radio" name="h-biz-power" value="Grid"> Grid (NEPA)</label>
-              <label class="radio-item"><input type="radio" name="h-biz-power" value="None"> No electricity</label>
-              <label class="radio-item"><input type="radio" name="h-biz-power" value="Other"> Other</label>
+              <label class="radio-item"><input type="checkbox" name="h-biz-power" value="Generator"> Generator</label>
+              <label class="radio-item"><input type="checkbox" name="h-biz-power" value="Solar SHS"> Solar SHS</label>
+              <label class="radio-item"><input type="checkbox" name="h-biz-power" value="Grid"> Grid (NEPA)</label>
+              <label class="radio-item"><input type="checkbox" name="h-biz-power" value="None"> No electricity</label>
+              <label class="radio-item"><input type="checkbox" name="h-biz-power" value="Other"> Other</label>
             </div>
           </div>          
           <div class="subsection-title" style="margin-top:14px;margin-bottom:8px">D2 — Productive use of energy (PUE) customers</div>
@@ -794,12 +794,12 @@ a.docs-link{color:#185FA5;font-size:12px}
           <div class="form-group">
             <label class="field-label">Current primary energy source for this household</label>
             <div class="check-group" style="margin-top:4px">
-              <label class="radio-item"><input type="radio" name="h-energy-src" value="Generator"> Personal generator</label>
-              <label class="radio-item"><input type="radio" name="h-energy-src" value="Kerosene"> Kerosene / Lantern</label>
-              <label class="radio-item"><input type="radio" name="h-energy-src" value="Candles"> Candles</label>
-              <label class="radio-item"><input type="radio" name="h-energy-src" value="Torch/Powerbank"> Torch / Power bank</label>
-              <label class="radio-item"><input type="radio" name="h-energy-src" value="Solar SHS"> Solar home system</label>
-              <label class="radio-item"><input type="radio" name="h-energy-src" value="None"> None</label>
+              <label class="radio-item"><input type="checkbox" name="h-energy-src" value="Generator"> Personal generator</label>
+              <label class="radio-item"><input type="checkbox" name="h-energy-src" value="Kerosene"> Kerosene / Lantern</label>
+              <label class="radio-item"><input type="checkbox" name="h-energy-src" value="Candles"> Candles</label>
+              <label class="radio-item"><input type="checkbox" name="h-energy-src" value="Torch/Powerbank"> Torch / Power bank</label>
+              <label class="radio-item"><input type="checkbox" name="h-energy-src" value="Solar SHS"> Solar home system</label>
+              <label class="radio-item"><input type="checkbox" name="h-energy-src" value="None"> None</label>
             </div>
           </div>
           <div class="form-group" style="margin-top:8px">
@@ -879,7 +879,7 @@ a.docs-link{color:#185FA5;font-size:12px}
   template: 'template_k0pkudv',
   pubkey: 'FioSl-pheK3vdpxLR',
   to_email: 'oobademi@thenextier.com',
-  cc_email: 'ilazarus@thenextier.com, cogoliebune@thenextier.com, meminue@thenextier.com',
+  cc_email: 'nistifanus@thenextier.com, cogoliegbune@thenextier.com, meminue@thenextier.com',mgadzama@thenextier.com,
   sheets_url: 'https://script.google.com/macros/s/AKfycbz1QvoGW46UMuL8ztD83yNTTwq2FssUHRhZX1Lqh0UCO2wzHcCUavq1ljRsSfr6GL3o/exec',
   tracker_url: 'https://docs.google.com/spreadsheets/d/1yUj4tYZPMIrq6mOjtzDj5gp3hqsOU0xoxhXJ1cE4ONY/edit'
 };  
@@ -1007,11 +1007,11 @@ function collectHouseholdData(){
     rooms: getVal('h-rooms'),
     commercial: getRadioValue('h-commercial'),
     biz_types: getCheckValues('h-biz-type'),
-    biz_power: getRadioValue('h-biz-power'),
+    biz_power: getCheckValue('h-biz-power'),
     pue: getRadioValue('h-pue'),
     pue_types: getCheckValues('h-pue-type'),
     pue_wtp: getVal('h-pue-wtp'),
-    energy_src: getRadioValue('h-energy-src'),
+    energy_src: getCheckValue('h-energy-src'),
     energy_spend: getVal('h-energy-spend'),
     current_hrs: getRadioValue('h-current-hrs'),
     appliances: getCheckValues('h-appliances'),
