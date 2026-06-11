@@ -90,7 +90,7 @@ a.docs-link{color:#185FA5;font-size:12px}
     <div class="app-logo"><i class="ti ti-solar-panel"></i></div>
     <div>
       <div class="app-title">Minigrid feasibility study — field assessment</div>
-      <div class="app-subtitle">Household assessment &amp; community data collection portal</div>
+      <div class="app-subtitle">Building assessment &amp; community data collection portal</div>
     </div>    
   </div>  
 
@@ -98,7 +98,7 @@ a.docs-link{color:#185FA5;font-size:12px}
   <div id="main-app">
     <div class="nav-tabs">
       <button class="nav-tab active" onclick="switchTab('household')" id="tab-household">
-        <i class="ti ti-home"></i> Part 1 — Household assessment
+        <i class="ti ti-home"></i> Part 1 — Building assessment
       </button>
       <button class="nav-tab" onclick="switchTab('community')" id="tab-community">
         <i class="ti ti-building-community"></i> Part 2 — Community assessment
@@ -631,7 +631,7 @@ a.docs-link{color:#185FA5;font-size:12px}
       <div class="section-card">
         <div class="section-header" onclick="toggleSection(this)">
           <span class="sec-badge">SEC A</span>
-          <span class="sec-title">Household visit information</span>
+          <span class="sec-title">Building visit information</span>
           <i class="ti ti-chevron-down sec-chevron open"></i>
         </div>
         <div class="section-body open">
@@ -644,7 +644,7 @@ a.docs-link{color:#185FA5;font-size:12px}
               <label class="field-label">Site ID * <span style="font-weight:400;color:#999">(must match community form)</span></label>
               <input type="text" id="h-site-id" placeholder="e.g. NG-KD-001" oninput="checkSiteIdLink()">
             </div>
-            <div class="form-group"><label class="field-label">Household number (e.g. HH-001, HH-002 — increment per household) *</label><input type="text" id="h-hh-ref" placeholder="e.g. HH-001"></div>
+            <div class="form-group"><label class="field-label">Building number (e.g. HH-001, HH-002 — increment per building) *</label><input type="text" id="h-hh-ref" placeholder="e.g. HH-001"></div>
           </div>
           <div id="h-link-status" style="display:none;margin-top:4px;font-size:12px;padding:6px 10px;border-radius:8px"></div>
           <div class="form-row cols-2" style="margin-top:8px">
@@ -660,7 +660,7 @@ a.docs-link{color:#185FA5;font-size:12px}
       <div class="section-card">
         <div class="section-header" onclick="toggleSection(this)">
           <span class="sec-badge">SEC C</span>
-          <span class="sec-title">Household &amp; population data</span>
+          <span class="sec-title">Building &amp; population data</span>
           <i class="ti ti-chevron-down sec-chevron"></i>
         </div>
         <div class="section-body">
@@ -673,7 +673,7 @@ a.docs-link{color:#185FA5;font-size:12px}
             </div>
           </div>
           <div class="form-group" style="margin-top:8px">
-            <label class="field-label">Structure type of this household</label>
+            <label class="field-label">Structure type of this building</label>
             <div class="check-group" style="margin-top:4px">
               <label class="radio-item"><input type="radio" name="h-struct-type" value="Residential"> Residential house</label>
               <label class="radio-item"><input type="radio" name="h-struct-type" value="Shop/Kiosk"> Shop / Kiosk</label>
@@ -685,7 +685,7 @@ a.docs-link{color:#185FA5;font-size:12px}
             </div>
           </div>
           <div class="form-group" style="margin-top:8px">
-            <label class="field-label">Number of occupants / members in this household</label>
+            <label class="field-label">Number of occupants / members in this building</label>
             <input type="number" id="h-occupants" placeholder="0">
           </div>
           <div class="form-group" style="margin-top:8px">
@@ -705,7 +705,7 @@ a.docs-link{color:#185FA5;font-size:12px}
         <div class="section-body">
           <div class="subsection-title" style="margin-bottom:8px">D1 — Commercial customer inventory</div>
           <div class="form-group">
-            <label class="field-label">Does this household operate any commercial activity?</label>
+            <label class="field-label">Does this building operate any commercial activity?</label>
             <div class="check-group" style="margin-top:4px">
               <label class="radio-item"><input type="radio" name="h-commercial" value="Yes"> Yes</label>
               <label class="radio-item"><input type="radio" name="h-commercial" value="No"> No</label>
@@ -741,7 +741,7 @@ a.docs-link{color:#185FA5;font-size:12px}
           <div class="subsection-title" style="margin-top:14px;margin-bottom:8px">D2 — Productive use of energy (PUE) customers</div>
           <div class="warn-note"><i class="ti ti-alert-triangle" style="font-size:14px;flex-shrink:0;margin-top:1px"></i>PUE customers use electricity directly for economic production. Record each category carefully.</div>
           <div class="form-group" style="margin-top:8px">
-            <label class="field-label">Does this household use electricity for productive/economic purposes (PUE)?</label>
+            <label class="field-label">Does this building use electricity for productive/economic purposes (PUE)?</label>
             <div class="check-group" style="margin-top:4px">
               <label class="radio-item"><input type="radio" name="h-pue" value="Yes"> Yes</label>
               <label class="radio-item"><input type="radio" name="h-pue" value="No"> No</label>
@@ -792,7 +792,7 @@ a.docs-link{color:#185FA5;font-size:12px}
         <div class="section-body">
           <div class="subsection-title" style="margin-bottom:8px">E2 — Household energy expenditure</div>
           <div class="form-group">
-            <label class="field-label">Current primary energy source for this household</label>
+            <label class="field-label">Current primary energy source for this building</label>
             <div class="check-group" style="margin-top:4px">
               <label class="radio-item"><input type="checkbox" name="h-energy-src" value="Generator"> Personal generator</label>
               <label class="radio-item"><input type="checkbox" name="h-energy-src" value="Kerosene"> Kerosene / Lantern</label>
@@ -817,7 +817,7 @@ a.docs-link{color:#185FA5;font-size:12px}
             </div>
           </div>
           <div class="form-group" style="margin-top:8px">
-            <label class="field-label">Key appliances household would use with minigrid supply (select all that apply)</label>
+            <label class="field-label">Key appliances building would use with minigrid supply (select all that apply)</label>
             <div class="check-group" style="margin-top:4px">
               <label class="check-item"><input type="checkbox" name="h-appliances" value="Lighting"> Lighting (bulbs)</label>
               <label class="check-item"><input type="checkbox" name="h-appliances" value="Phone charging"> Phone charging</label>
@@ -859,7 +859,7 @@ a.docs-link{color:#185FA5;font-size:12px}
         </div>
         <div class="section-body">
           <div class="form-group">
-            <label class="field-label">Upload photos for this household (max 5 photos)</label>
+            <label class="field-label">Upload photos for this building (max 5 photos)</label>
             <input type="file" id="h-photos" accept="image/*" multiple style="padding:8px;border:0.5px solid #ccc;border-radius:8px;width:100%;font-size:13px">
             <div class="field-note" style="font-size:11px;color:#999;margin-top:4px">Accepted formats: JPG, PNG. Each photo should be under 5MB.</div>
           </div>
@@ -1082,7 +1082,7 @@ async function submitForm(type){
   if(emailReady){
     try{
       await emailjs.send(emailConfig.service,emailConfig.template,{
-        form_type:type==='community'?'Part 2 — Community Assessment':'Part 1 — Household Assessment',
+        form_type:type==='community'?'Part 2 — Community Assessment':'Part 1 — Building Assessment',
         site_id:data.site_id||'N/A',
         officer_name:data.officer_name||'N/A',
         community_name: data.community_name || data.site_id || 'N/A',
@@ -1180,7 +1180,7 @@ function captureGPS(){
   var siteVal = document.getElementById('h-site-id').value.trim();
   var hhRef = document.getElementById('h-hh-ref').value.trim();
   if(!officerVal || !siteVal || !hhRef){
-    showToast('Please fill in officer name, site ID and household number first','error');
+    showToast('Please fill in officer name, site ID and Building number first','error');
     return;
   }
 
@@ -1228,10 +1228,10 @@ function captureGPS(){
   }catch(e){}
 
   householdCount++;
-  showToast('Household ' + hhRef + ' saved. Ready for next entry.','success');
+  showToast('Buillding ' + hhRef + ' saved. Ready for next entry.','success');
 
   var countEl = document.getElementById('hh-count-display');
-  if(countEl) countEl.textContent = householdCount + ' household(s) saved';
+  if(countEl) countEl.textContent = householdCount + ' building(s) saved';
 
   setTimeout(function(){
     document.getElementById('panel-household').querySelectorAll('input[type=text],input[type=number],input[type=date],textarea').forEach(function(el){el.value='';});
@@ -1257,11 +1257,11 @@ function captureGPS(){
   
   function proceedToCommunity(){
   if(householdCount === 0){
-    showToast('Please save at least one household entry first','error');
+    showToast('Please save at least one building entry first','error');
     return;
   }
   switchTab('community');
-  showToast(householdCount + ' household(s) saved. Now fill in the community assessment.','info');
+  showToast(householdCount + ' building(s) saved. Now fill in the community assessment.','info');
 }
 captureGPS();
 
