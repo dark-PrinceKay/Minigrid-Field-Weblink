@@ -1175,8 +1175,7 @@ function captureGPS(){
     currentGPS = 'GPS not supported';
   }
 }
-
-function saveAndNext(){
+  async function saveAndNext(){
   var officerVal = document.getElementById('h-officer-name').value.trim();
   var siteVal = document.getElementById('h-site-id').value.trim();
   var hhRef = document.getElementById('h-hh-ref').value.trim();
@@ -1184,11 +1183,43 @@ function saveAndNext(){
     showToast('Please fill in officer name, site ID and household number first','error');
     return;
   }
+
   var data = collectHouseholdData();
   var timestamp = new Date().toISOString();
 
+  var photoUrls = [];
+  var photoFiles = document.getElementById('h-photos').files;
+  if(photoFiles.length > 0){
+    showToast('Uploading photos...','info');
+    for(var i = 0; i < Math.min(photoFiles.length, 5); i++){
+      var file = photoFiles[i];
+      var base64 = await toBase64(file);
+      try{
+        var res = await fetch(emailConfig.sheets_url, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            type: 'photo',
+            site_id: siteVal,
+            filename: hhRef + '_photo' + (i+1) + '_' + file.name,
+            mimeType: file.type,
+            data: base64
+          })
+        });
+        var result = await res.json();
+        if(result.url) photoUrls.push(result.url);
+      }catch(err){
+        console.log('Photo upload failed:', err);
+      }
+    }
+  }
+
+  data.photo_notes = document.getElementById('h-photo-notes').value;
+  data.photo_urls = photoUrls.join(', ');
+
   fetch(emailConfig.sheets_url, {
     method: 'POST',
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({form_type: 'household', data: data})
   });
 
@@ -1205,16 +1236,26 @@ function saveAndNext(){
   setTimeout(function(){
     document.getElementById('panel-household').querySelectorAll('input[type=text],input[type=number],input[type=date],textarea').forEach(function(el){el.value='';});
     document.getElementById('panel-household').querySelectorAll('input[type=radio],input[type=checkbox]').forEach(function(el){el.checked=false;});
+    document.getElementById('photo-preview').innerHTML = '';
     document.getElementById('h-officer-name').value = officerVal;
-    captureGPS();
     document.getElementById('h-site-id').value = siteVal;
     var nextNum = householdCount + 1;
     document.getElementById('h-hh-ref').value = 'HH-' + String(nextNum).padStart(3,'0');
+    captureGPS();
     updateProgress();
   }, 2000);
 }
 
-function proceedToCommunity(){
+  function toBase64(file){
+  return new Promise(function(resolve, reject){
+    var reader = new FileReader();
+    reader.onload = function(){ resolve(reader.result.split(',')[1]); };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+  
+  function proceedToCommunity(){
   if(householdCount === 0){
     showToast('Please save at least one household entry first','error');
     return;
